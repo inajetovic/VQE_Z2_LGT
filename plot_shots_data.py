@@ -96,5 +96,4 @@ for i, (P, subdata) in enumerate(df.groupby("P")):
 handles, labels = ax.get_legend_handles_labels()
 fig.legend(handles, labels, loc='lower center', ncol=len(labels), fontsize=18)
 plt.tight_layout(rect=[0, 0.1, 1, 1])
-#plt.savefig(f"{len(seeds)}SPSA_relative_error_plot3.pdf")
 plt.show()

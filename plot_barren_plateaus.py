@@ -1,5 +1,5 @@
 import pickle
-path="/Users/matteoantonioinajetovic/Z2LGTcluster/variances_nlayers_1_2_3_plaquettes_1_2_3_4_samples_100.pkl"
+path="variances_nlayers_1_2_3_plaquettes_1_2_3_4_samples_100.pkl"
 with open(path, 'rb') as f:
     plaq4 = pickle.load(f)
 
@@ -53,8 +53,6 @@ for ansatz_type in ["Invariant", "mbqc"]:
 plt.ylim(1e-2,14)
 plt.xlabel("Qubits")
 plt.ylabel(r"$\langle \partial \theta_{N} C\rangle$ Variance")
-#plt.title("Variance vs Qubits for Different Ansatz and Layer Sizes")
-#plt.semilogy(qubits,[10000/np.exp(el) for el in qubits],linestyle="--",color="r")
 
 # Create custom legend handles
 color_legend = [Line2D([0], [0], color=colors[at], lw=4, label=names[at]) for at in colors]
@@ -62,7 +60,6 @@ marker_legend = [
     Line2D([0], [0], marker=layer_markers[i % len(layer_markers)], linestyle="", color="black", label=f"{n_layers} layers")
     for i, n_layers in enumerate(sorted({nl for ansatz in variances_dict.values() for nl in ansatz}))
 ]
-#plt.semilogy(qubits, [10000/np.exp(el) for el in qubits], linestyle="--", color="r", label=r"$\sim e^{-n}$")
 
 # Add legends
 legend2 = plt.legend(handles=marker_legend, loc="lower right")
@@ -71,6 +68,5 @@ legend1 = plt.legend(handles=color_legend, loc="lower left")
 # Add both legends to the plot
 plt.gca().add_artist(legend2)
 plt.tight_layout()
-#plt.savefig(f"Variances2.pdf")
 plt.show()
 
