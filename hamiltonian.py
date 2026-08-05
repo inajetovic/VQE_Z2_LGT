@@ -178,7 +178,8 @@ def ladder_hamiltonian(n_plaq, J, m, μ, η, V, defects):
         hamiltonian += kin_term'''
 
     matter_sites = neighbours(n_plaq)
-    hamiltonian += V * gauss_penalty(matter_sites, defects)
+    if V!=0:
+        hamiltonian += V * gauss_penalty(matter_sites, defects)
 
     return hamiltonian
 

@@ -135,7 +135,7 @@ def circuit(n_plaq, n_layers, n_qubits, H,params, charge_inds, hva=False):
     #print(f"Running circuit with {n_layers} layers and {n_qubits} qubits")
 
         for i in range(1, n_qubits-1, 2):
-            qml.H(wires=i)
+            qml.Hadamard(wires=i)
 
         '''if n_plaq == 1:
             odd_sites = [0, 8]#[2, 6]#
@@ -180,7 +180,7 @@ def circuit_p(n_plaq, n_layers, n_qubits, H,params, charge_inds, hva=False):
     #print(f"Running circuit with {n_layers} layers and {n_qubits} qubits")
 
         for i in range(1, n_qubits-1, 2):
-            qml.H(wires=i)
+            qml.Hadamard(wires=i)
 
         '''if n_plaq == 1:
             odd_sites = [0, 8]#[2, 6]#
@@ -219,7 +219,7 @@ def circuit_state(n_plaq, n_layers, n_qubits, H, charge_inds, hva=False):
     #print(f"Running circuit with {n_layers} layers and {n_qubits} qubits")
     def pqc(params):
         for i in range(1, n_qubits-1, 2):
-            qml.H(wires=i)
+            qml.Hadamard(wires=i)
 
         fermions = list(range(0, n_qubits, 2))
         avoided_qubits = [q*6+4 for q in range(0, n_plaq)]
@@ -258,7 +258,7 @@ def circuit_square(node_dict, n_layers, H, params):
     link_dict= {k:v for k,v in node_dict.items() if k not in fermion_dict.keys()}
 
     for i in link_dict.values():
-        qml.H(wires=i)
+        qml.Hadamard(wires=i)
 
     for i in fermion_dict.values():
         if i % 2 != 0:
@@ -286,7 +286,7 @@ def circuit_square_state(node_dict, n_layers):
         link_dict= {k:v for k,v in node_dict.items() if k not in fermion_dict.keys()}
 
         for i in link_dict.values():
-            qml.H(wires=i)
+            qml.Hadamard(wires=i)
 
         for i in fermion_dict.values():
             if i % 2 != 0:
